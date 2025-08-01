@@ -1,0 +1,36 @@
+/*
+ * Благ број е број што е составен само од парни цифри (0, 2, 4, 6, 8). Во зададен опсег (почетокот m и крајот на опегот n се цели броеви чија вредност се внесува од тастатура), да се најде и испечати најмалиот „благ број“. Ако не постои таков број, да се испечати NE. 
+*/
+
+#include <iostream>
+using namespace std;
+
+bool isSweetNum(int n){
+    while (n > 0){
+        int digit = n % 10;
+        if (digit % 2 != 0){
+            return false;
+        }
+        n /= 10;
+    }
+    return true;
+}
+
+int main() {
+    int n, m;
+    cin >> n >> m;
+
+    bool found = false;
+
+    for (int i = n; i <= m; i++){
+        if (isSweetNum(i)){
+            cout << i;
+            found = true;
+            break;
+        }
+    }
+    if (!found){
+        cout << "NE";
+    }
+    return 0;
+}
