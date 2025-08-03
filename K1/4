@@ -1,0 +1,37 @@
+/*
+* Од стандарден влез се читаат знаци се додека не се прочита извичник. Во вака внесениот текст се скриени цели броеви (помали од 100). Да се напише програма што ќе ги прочита сите знаци и на излез ќе го испечати 
+* збирот на сите броеви скриени во текстот.
+*/
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    char znak;
+    int broj = 0;
+    int sum = 0;
+    bool cifri = false;
+
+    while (cin >> noskipws >> znak) {
+        if (znak == '!') {
+            if (cifri) {
+                sum += broj;
+            }
+            break;
+        }
+
+        if (isdigit(znak)) {
+            broj = broj * 10 + (znak - '0');
+            cifri = true;
+        } else {
+            if (cifri) {
+                sum += broj;
+                broj = 0;
+                cifri = false;
+            }
+        }
+    }
+
+    cout << sum << endl;
+    return 0;
+}
