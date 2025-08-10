@@ -7,28 +7,34 @@ using namespace std;
 
 int main() {
     int z;
-    cin>>z;
+    cin >> z;
     int a, b;
     int count = 0;
     int total_pairs = 0;
-       while (true){
-           cin>>a>>b;
-           if (a == 0 && b == 0){
-               break;
-           }
-           total_pairs++;
-           int zbir = a + b;
-           if (zbir == z){
-               count++;
-           }
-       }
-       cout<<count;
-       if (total_pairs > 0){
-           double percentage = (count * 100.0) / total_pairs;
-           cout << percentage << "%" << endl;
-       } else {
-           cout << "0%" << endl;
-       }
+
+    while (true) {
+        cin >> a >> b;
+        if (a == 0 && b == 0) {
+            break;
+        }
+        total_pairs++;
+        int zbir = a + b;
+        if (zbir == z) {
+            count++;
+        }
+    }
+
+    cout << "Vnesovte " << count 
+         << " parovi od broevi chij zbir e " << z << endl;
+
+    if (total_pairs > 0) {
+        double percentage = (count * 100.0) / total_pairs;
+        cout << "Procentot na parovi so zbir " << z 
+             << " e " << percentage << "%" << endl;
+    } else {
+        cout << "Procentot na parovi so zbir " << z 
+             << " e 0%" << endl;
+    }
 
     return 0;
 }
