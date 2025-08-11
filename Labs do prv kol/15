@@ -1,0 +1,28 @@
+Да се напише програма во која што се внесува еден четирицифрен и еден трицифрен број. Да се отпечати 1 доколку сумата на цифрите на првиот број е поголема од сумата на цифрите на вториот број, во спротивно 0. 
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int triCif, chetiriCif;
+    cin>>chetiriCif>>triCif;
+
+    int t1 = (triCif / 100) % 10;
+    int t2 = (triCif / 10) % 10;
+    int t3 = triCif % 10;
+    int suma3 = t1 + t2 + t3;
+
+    int c1 = chetiriCif / 1000;
+    int c2 = (chetiriCif / 100) % 10;
+    int c3 = (chetiriCif / 10) % 10;
+    int c4 = chetiriCif % 10;
+    int suma4 = c1 + c2 + c3 + c4;
+
+    if (suma4 > suma3){
+        cout<<"1";
+    } else {
+        cout<<"0";
+    }
+
+    return 0;
+}
