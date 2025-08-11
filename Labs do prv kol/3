@@ -1,0 +1,25 @@
+Да се напише програма која за петцифрен број внесен од стандарден влез ќе ја пресмета сумата на цифрите на парните и непарните позиции соодветно.
+Напомена: Последната цифра во бројот се наоѓа на 0-та позиција. 
+Појаснување: За бројот 54321 цифрата на 0-та позиција е 1, додека цифрата на 4-та позиција е 5.
+
+#include <iostream>
+using namespace std;
+int main() {
+int broj;
+cin>>broj;
+int brParni = 0, brNeparni = 0;
+
+for (int i = 0; i < 5; i++){
+    int digit = broj % 10;
+    broj /= 10;
+    if (i % 2 == 0){
+        brParni+=digit;
+    } else {
+        brNeparni+=digit;
+    }
+}
+cout<<"Sumata na cifrite na parnite pozicii e "<<brParni<<endl;
+cout<<"Sumata na cifrite na neparnite pozicii e "<<brNeparni;
+
+    return 0;
+}
