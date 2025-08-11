@@ -1,0 +1,15 @@
+Да се напише програма која чита радиус на кружница од стандарден влез. На излез да се испечати периметарот и плоштината на кружницата.
+
+#include <iostream>
+using namespace std;
+#define pi 3.14
+
+int main() {
+    double radius;
+    cin>>radius;
+    float P = 2 * pi * radius;
+    float A = pi * radius * radius;
+    cout<<"Perimetar: "<<P<<endl;
+    cout<<"Plostina: "<<A;
+    return 0;
+}
