@@ -1,0 +1,19 @@
+Од стандарден влез се чита четирицифрен број. Да се испечати 1 доколку цифрите во бројот се во строго растечки редослед, во спротивно да се испечати 0.
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int broj;
+    cin>>broj;
+    int prv = broj / 1000;
+    int vtor = (broj/100)%10;
+    int tret = (broj%100)/10;
+    int chetvrt = broj % 10;
+    if (prv < vtor && vtor < tret && tret < chetvrt){
+        cout<<"1";
+    } else {
+        cout<<"0";
+    }
+    return 0;
+}
