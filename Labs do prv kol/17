@@ -1,0 +1,37 @@
+За еден студент се читаат освоени поени од 5 активности за еден предмет. Услов за еден предмет да биде положен е да се имаат над 50 освоени поени. 
+Ако студентот има 0-50 поени не го положил предметот, ако има 51-60 го положил со 6, 61-70 го положил со 7, 71-80 го положил со 8, 81-90 го положил со 9 и над 90 го положил со 10.
+Да се испечати оценката која ја имал студентот,неговите поени и да се испечати Ima uslov za povisoka ocenka доколку има услов да добие повисока оценка, а во спротивно да се испечати Nema uslov za povisoka ocenka. 
+Услов за повисока оценка има само ако недостига 1 поен за добивање на повисока оценка.
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int p1, p2, p3, p4, p5;
+    cin>>p1>>p2>>p3>>p4>>p5;
+
+    int sumiraniPoedni = p1+p2+p3+p4+p5;
+    int ocenka;
+    if (sumiraniPoedni >= 0 && sumiraniPoedni <= 50){
+        cout<<"Predmetot ne e polozen";
+        return 0;
+    }
+    if (sumiraniPoedni >= 51 && sumiraniPoedni <= 60) { ocenka = 6; }
+    else if (sumiraniPoedni >= 61 && sumiraniPoedni <= 70) { ocenka = 7; }
+    else if (sumiraniPoedni >= 71 && sumiraniPoedni <= 80) { ocenka = 8; }
+    else if (sumiraniPoedni >= 81 && sumiraniPoedni <= 90) { ocenka = 9; }
+    else if (sumiraniPoedni >= 91 && sumiraniPoedni <= 100) { ocenka = 10; }
+        else {
+        cout<<"Nevalidna suma na poeni"; return 0;
+        }
+        cout<<"Ocenka: "<<ocenka<<", poeni: "<<sumiraniPoedni<<endl;
+    if (sumiraniPoedni == 60 || sumiraniPoedni == 70 ||
+        sumiraniPoedni == 80 || sumiraniPoedni == 90) {
+        cout << "Ima uslov za povisoka ocenka";
+    } else if (sumiraniPoedni == 100){}
+    else {
+        cout << "Nema uslov za povisoka ocenka";
+    }
+    
+    return 0;
+}
