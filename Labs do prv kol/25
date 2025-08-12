@@ -1,0 +1,38 @@
+Од стандарден влез се читаат два телефонски броја и времетраење на разговорот во минути.
+Да се пресмета цената на повикот доколку знаеме дека првите 30 минути чинат 3 ден/мин, 
+а после тие 30 мин цената на 1 минута е 2ден.
+Дополнително доколку двата телефонски броја се на ист оператор да се пресмета 30% попуст.
+
+оператор1 ги користи (071, 072, 073)
+оператор2 ги користи (074, 075, 076)
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int broj1, broj2, minuti;
+    cin >> broj1 >> broj2 >> minuti;
+
+    double cena;
+    if (minuti <= 30) {
+        cena = minuti * 3;
+    } else {
+        cena = 30 * 3 + (minuti - 30) * 2;
+    }
+
+    int pref1 = broj1 / 1000000;
+    int pref2 = broj2 / 1000000;
+
+    bool op1_pref1 = (pref1 == 71 || pref1 == 72 || pref1 == 73);
+    bool op1_pref2 = (pref2 == 71 || pref2 == 72 || pref2 == 73);
+
+    bool op2_pref1 = (pref1 == 74 || pref1 == 75 || pref1 == 76);
+    bool op2_pref2 = (pref2 == 74 || pref2 == 75 || pref2 == 76);
+
+    if ((op1_pref1 && op1_pref2) || (op2_pref1 && op2_pref2)) {
+        cena *= 0.7;
+    }
+
+    cout << cena;
+    return 0;
+}
