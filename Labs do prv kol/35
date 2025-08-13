@@ -1,0 +1,45 @@
+Да се напише код којшто ќе и помогне на една продавница во пресметките на попустите на одредени артикли.
+Попустите се означуваат со различна буква и тоа 
+
+А == 20%
+B == 50%
+C == 70%
+D == 0% nema popust
+
+Од стандарден влез најпрвин се чита број на артикли кои сака купувачот да ги купи, а потоа како парови се внесуваат цената и видот на попуст за секој од посакуваните артикли.
+Да се испечати колку ќе биде сумата што купувачот ќе треба да ја плати вклучувајќи го попустот за секој од артиклите соодветно.  Исто така во нов ред да се испечати и колку изнесува попустот на купувачот во денари односно колку денари заштедил.
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;
+
+    double totalPrice = 0;  
+    double totalDiscount = 0;
+
+    for (int i = 0; i < n; i++) {
+        double price;
+        char discountType;
+        cin >> price >> discountType;
+
+        double discountPercent = 0;
+
+        if (discountType == 'A') discountPercent = 20;
+        else if (discountType == 'B') discountPercent = 50;
+        else if (discountType == 'C') discountPercent = 70;
+        else if (discountType == 'D') discountPercent = 0;
+
+        double discountAmount = price * discountPercent / 100.0;
+        double finalPrice = price - discountAmount;
+
+        totalPrice += finalPrice;
+        totalDiscount += discountAmount;
+    }
+
+    cout  << totalPrice  << endl;
+    cout << totalDiscount << endl;
+
+    return 0;
+}
