@@ -1,0 +1,31 @@
+Од стандарден влез се внесува даден број X,  а потоа се внесуваат броеви додека не се внесе нешто различно од број. За секој од броевите да се провери дали неговиот 
+број на цифри е еднаков со бројот на цифри на Х,и доколку условот е исполнет, да се испечати.
+
+#include <iostream>
+using namespace std;
+
+int countDigits(int n) {
+    if (n == 0) return 1;
+    int counter = 0;
+    n = abs(n);
+    while (n > 0) {
+        counter++;
+        n /= 10;
+    }
+    return counter;
+}
+
+int main() {
+    int X;
+    cin >> X;
+    int digitsX = countDigits(X);
+
+    int broj;
+    while (cin >> broj) {
+        if (countDigits(broj) == digitsX) {
+            cout << broj << endl;
+        }
+    }
+
+    return 0;
+}
