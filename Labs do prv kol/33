@@ -1,0 +1,42 @@
+Од стандарден влез се внесуваат број x и n, па потоа n цели броеви. Да се провери дали бројот x се содржи во внесените n броеви од тастатура. Секогаш x ќе биде помал од внесените n броеви после него.
+Броевите што го исполнуваат условот да се испечатат на екран. Доколку нема такви да се испечати Nema.
+
+Пример: Најпрво се внесуваат x и n (нека x = 23, n = 4). Потоа се внесуваат n (во случајов 4) броеви од тастатура (нека бидат 1234, 2333, 1122, 1114455). Броевите што треба да се испечатат на екран се:
+1234, 2333, затоа што во нив го содржат бројот х (во случајов 23).
+
+#include <iostream>
+using namespace std;
+
+bool isPalindrome(int n) {
+    int org = n;
+    int rev = 0;
+    while (n > 0) {
+        int digit = n % 10;
+        rev = rev * 10 + digit;
+        n /= 10;
+    }
+    return org == rev;
+}
+
+int main() {
+    int pocetok, kraj;
+    cin >> pocetok >> kraj;
+
+    int smallest = -1;
+    int largest = -1;
+
+    for (int i = pocetok; i <= kraj; i++) {
+        if (isPalindrome(i)) {
+            if (smallest == -1) smallest = i;  // прв палиндром - најмал
+            largest = i; // секој нов палиндром може да биде најголем
+        }
+    }
+
+    if (smallest == -1) {
+        cout << "Nema" << endl;
+    } else {
+        cout << "Smallest Palindromic Number: " << smallest << endl;
+        cout << "Largest Palindromic Number: " << largest << endl;
+    }
+    return 0;
+}
