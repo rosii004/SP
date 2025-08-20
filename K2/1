@@ -1,0 +1,53 @@
+Се внесуваат низи од значи од стандарден влез. Да се избројат и испечатат сите последнователни појавувања на соседни самогласки во речениците. Појавата на големи и мали букви да се игнорира. Пронајдените парови самогласки да се испечатат на екран, 
+секој во нов ред со мали букви. Потоа во нов ред се печати бројот на појавувања на паровите самогласки. Читањето завршува кога ќе се прочита знакот #.
+
+Пример:
+IO is short for Input Output
+medioio medIo song
+#
+Излез:
+io
+ou
+io
+oi
+io
+io
+6
+
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+char toLowerChar(char c) {
+    if (c >= 'A' && c <= 'Z') {
+        return c + 32; // разлика меѓу 'A' и 'a' е 32
+    }
+    return c;
+}
+
+bool isVowel(char c) {
+    return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u';
+}
+
+int main() {
+    string line;
+    int total = 0;
+
+    while (true) {
+        getline(cin, line);
+        if (line == "#") break; // крај на читање
+
+        for (int i = 0; i < (int)line.size() - 1; i++) {
+            char c1 = toLowerChar(line[i]);
+            char c2 = toLowerChar(line[i + 1]);
+            if (isVowel(c1) && isVowel(c2)) {
+                cout << c1 << c2 << endl;
+                total++;
+            }
+        }
+    }
+
+    cout << total << endl;
+    return 0;
+}
