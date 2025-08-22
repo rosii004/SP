@@ -1,0 +1,60 @@
+Од тастатура се внесуваат димензиите на една матрица (m, n <= 100), а потоа и елементите од матрицата. Да се генерира низа (со најмногу m) така што секој елемент од низата се добива со наоѓање на елементот во 
+секоја редица од матрицата што е најоддалечен од аритметичката средина во рамки на таа редица. Ако постојат повеќе елементи што се најоддалечени од аритметичката средина, тогаш се зема предвид првиот. 
+Редоследот на запишување на елементите во низата одговара на редоследот на редиците.
+
+Влез:
+3 6
+1 2 2 3 4 5
+1 1 2 2 3 3
+1 2 3 4 5 6
+
+Излез:
+5 1 1
+
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+const int MAX = 100;
+
+int main() {
+    int M, N;
+    cin >> M >> N;
+
+    int a[MAX][MAX];
+
+    for (int i = 0; i < M; ++i) {
+        for (int j = 0; j < N; ++j) {
+            cin >> a[i][j];
+        }
+    }
+
+    int rezultat[MAX];
+
+    for (int i = 0; i < M; ++i) {
+        int suma = 0;
+        for (int j = 0; j < N; ++j) {
+            suma += a[i][j];
+        }
+        double sredina = (double)suma / N;
+
+        int najElem = a[i][0];
+        double maxRazlika = fabs(a[i][0] - sredina);
+
+        for (int j = 1; j < N; ++j) {
+            double razlika = fabs(a[i][j] - sredina);
+            if (razlika > maxRazlika) {
+                maxRazlika = razlika;
+                najElem = a[i][j];
+            }
+        }
+        rezultat[i] = najElem;
+    }
+
+    for (int i = 0; i < M; ++i) {
+        cout << rezultat[i] << " ";
+    }
+    cout << endl;
+
+    return 0;
+}
