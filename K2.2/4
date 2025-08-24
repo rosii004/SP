@@ -1,0 +1,39 @@
+Од тастатура се внесува природен број N. Да се испише следната форма на излез:
+
+1
+121
+11311
+1114111
+……
+11..1N11...11
+
+При печатењето да се искористи рекурзивна функција која ќе печати еден ред од формата: 11..1K11..1.
+
+#include <iostream>
+using namespace std;
+
+void printOnes(int n) {
+    if (n <= 0) return;
+    cout << "1";
+    printOnes(n - 1);
+}
+
+void printRow(int K) {
+    printOnes(K - 1);
+    cout << K;
+    printOnes(K - 1);
+    cout << '\n';
+}
+
+void printPattern(int N) {
+    if (N == 0) return;
+    printPattern(N - 1);
+    printRow(N);
+}
+
+int main() {
+    int N;
+    cin >> N;
+    printPattern(N);
+    return 0;
+}
