@@ -6,26 +6,29 @@ Koga ke dojde do negativen broj da ne se odzima do 3 tuku da se soberi so 3 vo s
 #include <iostream>
 using namespace std;
 
-void printSequence(int n, int original) {
+void printSequence(int n, int original, bool goingDown) {
     cout << n << " ";
+
     if (n <= 0) {
+        goingDown = false;
+    }
+
+    if (n == original && !goingDown) {
         return;
     }
-    printSequence(n - 3, original);
-    if (n - 3 < 0) {
-        int next = n - 3 + 6;
-        if (next <= original) cout << next << " ";
+
+    if (goingDown) {
+        printSequence(n - 3, original, true);
     } else {
-        int next = n - 3 + 3;
-        if (next <= original) cout << next << " ";
+        printSequence(n + 3, original, false);
     }
 }
 
 int main() {
     int n;
     cin >> n;
-    void recur(int, int);
-    
-    recur(n, n);
+
+    printSequence(n, n, true);
+
     return 0;
 }
