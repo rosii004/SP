@@ -1,0 +1,27 @@
+#include <iostream>
+using namespace std;
+
+void sumEvenOdd(int start, int end, int &evenSum, int &oddSum) {
+    if (start > end) return;
+
+    if (start % 2 == 0)
+        evenSum += start;
+    else
+        oddSum += start;
+
+    sumEvenOdd(start + 1, end, evenSum, oddSum); // рекурзивен повик
+}
+
+int main() {
+    int start, end;
+    cout << "Enter range (start end): ";
+    cin >> start >> end;
+
+    int evenSum = 0, oddSum = 0;
+    sumEvenOdd(start, end, evenSum, oddSum);
+
+    cout << "Sum of even numbers = " << evenSum << endl;
+    cout << "Sum of odd numbers = " << oddSum << endl;
+
+    return 0;
+}
