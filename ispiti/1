@@ -1,0 +1,65 @@
+String
+Vnesi broj n, niza od zbor i potoa  vnesi n nizi. Za sekoja niza da se ispecati kolku recenici e (pocnuvajki od 0) i kolku pati posledovatelno se pojavuva prvata niza vo sekoja niza
+Na pr:
+2
+2024
+Srekna nova 2024! 
+Srekja i zdravje vo novata 20242024 godina. Vi posakuvame se najdobro! 
+
+Output:
+0:1
+1:2
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+bool isEndPunct(char c) {
+    return c == '.' || c == '!' || c == '?';
+}
+
+int main() {
+    int n;
+    cin >> n;
+    cin.ignore();
+
+    string pattern;
+    getline(cin, pattern);
+
+    for (int line = 0; line < n; ++line) {
+        string s;
+        getline(cin, s);
+
+        int sentences = 0;
+        bool inPunctRun = false;
+        for (char c : s) {
+            if (isEndPunct(c)) {
+                if (!inPunctRun) {
+                    sentences++;
+                    inPunctRun = true;
+                }
+            } else {
+                inPunctRun = false;
+            }
+        }
+        int left = (sentences > 0 ? sentences - 1 : 0);
+
+        int bestRun = 0;
+        int m = pattern.size();
+        for (size_t i = 0; i < s.size(); ++i) {
+            int run = 0;
+            while (i + run * m + m <= s.size() &&
+                   s.compare(i + run * m, m, pattern) == 0) {
+                run++;
+            }
+            if (run > 0) {
+                if (run > bestRun) bestRun = run;
+                i += run * m - 1; 
+            }
+        }
+
+        cout << left << ":" << bestRun << "\n";
+    }
+
+    return 0;
+}
